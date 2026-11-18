@@ -1,0 +1,24 @@
+:root { --bg:#0f1115; --card:#171a21; --ink:#e8eaf0; --dim:#8b92a5; --ok:#4ade80; --miss:#f87171; --unk:#a5b4fc; --line:#262b36; }
+* { box-sizing: border-box; }
+body { margin:0; font:15px/1.5 system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; display:grid; gap:16px; grid-template-columns: 1fr 1fr; }
+header, .banner { grid-column: 1 / -1; }
+h1 { margin:0; font-size:22px; } h2 { margin:0 0 8px; font-size:16px; }
+.banner { background:#2a2110; color:#facc15; border:1px solid #4a3a12; padding:8px 12px; border-radius:8px; font-size:13px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; min-width:0; }
+.dim { color:var(--dim); font-size:13px; }
+ul { list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+li { display:flex; justify-content:space-between; gap:8px; align-items:center; flex-wrap:wrap; }
+.cells { display:flex; gap:4px; }
+.cell { width:28px; height:28px; border-radius:6px; border:1px solid var(--line); background:#0f1115; color:var(--ink); cursor:pointer; font-weight:600; }
+.cell.done { background:#123222; color:var(--ok); } .cell.missed { background:#3a1616; color:var(--miss); }
+.cell.unknown { background:#1d2040; color:var(--unk); }
+.big { font-size:34px; font-weight:700; }
+pre { background:#0f1115; border:1px solid var(--line); border-radius:8px; padding:10px; overflow:auto; font-size:12px; margin:8px 0; }
+textarea, input[type=text] { width:100%; background:#0f1115; color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:8px; font:12px ui-monospace, monospace; }
+textarea { height:110px; resize:vertical; }
+table { width:100%; border-collapse:collapse; } td, th { text-align:left; padding:6px 4px; border-bottom:1px solid var(--line); }
+tr.me td { color:var(--ok); font-weight:600; }
+button.act { background:#2563eb; color:white; border:0; border-radius:8px; padding:6px 12px; cursor:pointer; }
+label { display:flex; gap:8px; align-items:center; margin:6px 0; }
+@media (max-width: 760px) { main { grid-template-columns: 1fr; } }

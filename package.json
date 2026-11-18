@@ -1,0 +1,14 @@
+{
+  "name": "open-healthspan",
+  "version": "0.1.0",
+  "description": "Privacy-first weekly progress circles: share an obfuscated score with friends, never your health data.",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test test/",
+    "check": "node scripts/check.mjs",
+    "demo": "node scripts/serve.mjs"
+  }
+}

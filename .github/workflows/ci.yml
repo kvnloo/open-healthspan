@@ -1,0 +1,24 @@
+name: ci
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - run: npm run check
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.48.0 && python -m playwright install --with-deps chromium
+      - run: |
+          npm run demo &
+          for i in $(seq 20); do curl -sf http://127.0.0.1:4173/demo/ >/dev/null && break; sleep 0.5; done
+          python scripts/e2e.py http://127.0.0.1:4173/

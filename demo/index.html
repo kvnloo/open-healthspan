@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Healthspan — weekly circle (synthetic demo)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Open Healthspan · weekly circle</h1>
+    <div class="dim">Compare how well you kept <em>your own</em> plan — never biomarkers, steps or "biological age".</div>
+  </header>
+  <div class="banner">Synthetic demo. Fictional people and data. Not medical advice. No network, nothing saved.</div>
+
+  <section>
+    <h2>Your week <span class="dim" id="week"></span></h2>
+    <p class="dim">Click a cell: ✓ done → ✗ missed → ? unknown → · not yet. Unknown never counts against you. Rest days count.</p>
+    <ul id="goals"></ul>
+    <p><span class="big" id="progress"></span><br><span class="dim" id="counts"></span></p>
+  </section>
+
+  <section>
+    <h2>Share with friends (off by default)</h2>
+    <label><input type="checkbox" id="optin"> Prepare a share for this group</label>
+    <label>Alias <input type="text" id="alias" value="Otter" maxlength="24"></label>
+    <p class="dim">The share is exactly 7 fields: a group-only member ID (HMAC of a secret that never leaves this page), your alias, the week, how many goals you planned, and your completion rounded down to a 5% band. Pseudonymous, not anonymous.</p>
+    <pre id="preview"></pre>
+    <input type="text" id="code" readonly placeholder="share code appears here">
+    <p><button class="act" id="copy">Copy code</button></p>
+  </section>
+
+  <section>
+    <h2>Friends' codes</h2>
+    <p class="dim">Paste codes from your group chat, one per line. Anything with extra fields is rejected.</p>
+    <textarea id="friends" spellcheck="false"></textarea>
+    <p class="dim" id="rejected"></p>
+  </section>
+
+  <section>
+    <h2>Circle board · tuesday-crew</h2>
+    <p>Together this week: <span class="big" id="together"></span></p>
+    <table><thead><tr><th>#</th><th>Alias</th><th>Kept plan</th><th>Goals</th></tr></thead><tbody id="board"></tbody></table>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
