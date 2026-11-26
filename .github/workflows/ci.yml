@@ -21,4 +21,4 @@ jobs:
       - run: |
           npm run demo &
           for i in $(seq 20); do curl -sf http://127.0.0.1:4173/demo/ >/dev/null && break; sleep 0.5; done
-          python scripts/e2e.py http://127.0.0.1:4173/
+          python scripts/e2e.py http://127.0.0.1:4173/demo/

@@ -1,0 +1,39 @@
+name: pages
+# Publishes the pretotype site at https://kvnloo.github.io/open-healthspan/ (site/ imports ../src and ../demo).
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', 'src/**', 'demo/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test && npm run check
+      - name: Stage site
+        run: |
+          mkdir -p _site && cp -R site src demo _site/ && touch _site/.nojekyll
+          printf '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=site/"><title>Open Healthspan</title><a href="site/">Open Healthspan</a>\n' > _site/index.html
+          for f in $(grep -oE '(href|src)="[^"#:]+"' site/index.html | sed -E 's/.*="([^"]+)"/\1/'); do
+            [ -e "_site/site/$f" ] || { echo "missing: $f"; exit 1; }
+          done
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

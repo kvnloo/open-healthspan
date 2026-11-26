@@ -29,11 +29,13 @@ Inspired by the Rejuvenation Olympics, the [Longevity World Cup](https://github.
 
 ## Run it
 
+The pretotype site (`site/`, see [docs/pretotype.md](docs/pretotype.md)) runs the same scoring code with a few "tell us you want it" buttons for features that aren't built yet.
+
 ```sh
 npm test         # 19 unit tests (node:test, zero dependencies)
 npm run check    # privacy gate: no network/storage APIs in src/ or demo/, no deps
-npm run demo     # http://127.0.0.1:4173/ (loopback only, CSP connect-src 'none')
-python3 scripts/e2e.py   # headless Chromium e2e (needs `pip install playwright`)
+npm run demo     # site http://127.0.0.1:4173/site/ · demo /demo/ (loopback only, CSP connect-src 'none')
+python3 scripts/e2e.py http://127.0.0.1:4173/demo/   # headless Chromium e2e (needs `pip install playwright`)
 ```
 
 The demo uses **synthetic, fictional data only**.

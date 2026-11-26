@@ -4,7 +4,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 
-const ROOTS = ['src', 'demo'];
+const ROOTS = ['src', 'demo', 'site'];
 const FORBIDDEN = [
   /\bfetch\s*\(/, /XMLHttpRequest/, /WebSocket/, /sendBeacon/, /EventSource/,
   /localStorage/, /sessionStorage/, /indexedDB/, /document\.cookie/, /geolocation/,
