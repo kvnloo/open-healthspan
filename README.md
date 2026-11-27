@@ -42,7 +42,7 @@ The demo uses **synthetic, fictional data only**.
 
 ## Scope and design
 
-The design is in five RFCs: [scope](docs/rfcs/rfc-0001-scope.md), [fair leaderboards](docs/rfcs/rfc-0002-leaderboards.md), [consent & threat model](docs/rfcs/rfc-0003-consent.md), [device-neutral adapters](docs/rfcs/rfc-0004-interoperability.md) and [outcome study](docs/rfcs/rfc-0005-study.md).
+The design is in six RFCs: [scope](docs/rfcs/rfc-0001-scope.md), [fair leaderboards](docs/rfcs/rfc-0002-leaderboards.md), [consent & threat model](docs/rfcs/rfc-0003-consent.md), [device-neutral adapters](docs/rfcs/rfc-0004-interoperability.md) and [outcome study](docs/rfcs/rfc-0005-study.md), plus [a research path](docs/rfcs/rfc-0006-research-access.md) that doesn't wait on a hospital data pull.
 
 The non-goals are firm:
 - no diagnosis or treatment, and no claims of life extension;
