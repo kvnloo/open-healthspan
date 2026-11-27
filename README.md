@@ -29,18 +29,20 @@ Inspired by the Rejuvenation Olympics, the [Longevity World Cup](https://github.
 
 ## Run it
 
+The pretotype site (`site/`, see [docs/pretotype.md](docs/pretotype.md)) runs the same scoring code with a few "tell us you want it" buttons for features that aren't built yet.
+
 ```sh
 npm test         # 19 unit tests (node:test, zero dependencies)
 npm run check    # privacy gate: no network/storage APIs in src/ or demo/, no deps
-npm run demo     # http://127.0.0.1:4173/ (loopback only, CSP connect-src 'none')
-python3 scripts/e2e.py   # headless Chromium e2e (needs `pip install playwright`)
+npm run demo     # site http://127.0.0.1:4173/site/ · demo /demo/ (loopback only, CSP connect-src 'none')
+python3 scripts/e2e.py http://127.0.0.1:4173/demo/   # headless Chromium e2e (needs `pip install playwright`)
 ```
 
 The demo uses **synthetic, fictional data only**.
 
 ## Scope and design
 
-The design is in five RFCs: [scope](docs/rfcs/rfc-0001-scope.md), [fair leaderboards](docs/rfcs/rfc-0002-leaderboards.md), [consent & threat model](docs/rfcs/rfc-0003-consent.md), [device-neutral adapters](docs/rfcs/rfc-0004-interoperability.md) and [outcome study](docs/rfcs/rfc-0005-study.md).
+The design is in six RFCs: [scope](docs/rfcs/rfc-0001-scope.md), [fair leaderboards](docs/rfcs/rfc-0002-leaderboards.md), [consent & threat model](docs/rfcs/rfc-0003-consent.md), [device-neutral adapters](docs/rfcs/rfc-0004-interoperability.md) and [outcome study](docs/rfcs/rfc-0005-study.md), plus [a research path](docs/rfcs/rfc-0006-research-access.md) that doesn't wait on a hospital data pull.
 
 The non-goals are firm:
 - no diagnosis or treatment, and no claims of life extension;
