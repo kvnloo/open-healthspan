@@ -7,10 +7,13 @@ opt-in -> share -> board -> withdraw loop.
 """
 import json
 import sys
+from urllib.parse import urlsplit
 
 from playwright.sync_api import sync_playwright
 
-BASE = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:4173/"
+BASE = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:4173/demo/"
+_u = urlsplit(BASE)
+ORIGIN = f"{_u.scheme}://{_u.netloc}/"
 OUT = sys.argv[2] if len(sys.argv) > 2 else None
 SHARE_KEYS = {"schema", "group_id", "member_id", "alias", "week", "goals_planned", "progress_band"}
 
@@ -40,7 +43,7 @@ def run(page):
     r["overflow"] = page.evaluate("document.documentElement.scrollWidth > innerWidth")
     r["styled"] = page.evaluate("getComputedStyle(document.body).backgroundColor") == "rgb(15, 17, 21)"
     r["errors"] = errors
-    r["off_origin"] = [u for u in reqs if not u.startswith(BASE)]
+    r["off_origin"] = [u for u in reqs if not u.startswith(ORIGIN)]
     return r
 
 
